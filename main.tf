@@ -1,8 +1,4 @@
-provider "aws" {
-  region                   = var.region
-  shared_credentials_files = ["/Users/mounikabethu/.aws/credentials"]
-  profile                  = "medibuddy"
-}
+
 ################################################################################
 ########### creating autoscaling for services ##################################
 ##################################################################################
@@ -54,6 +50,7 @@ resource "aws_appautoscaling_policy" "target-cpu-scaleup_policy" {
 ################################################################################
 ######################## memory-scale-up-policy ######################################
 ############################################################################
+  
 resource "aws_appautoscaling_policy" "target-memory-scaleup_policy" {
   #for_each           = toset(flatten([for k, v in data.external.example.result : jsondecode(v)]))
   for_each           = data.aws_ecs_service.service
@@ -71,7 +68,10 @@ resource "aws_appautoscaling_policy" "target-memory-scaleup_policy" {
   #depends_on = [aws_appautoscaling_target.service-autoscale]
 }
 
-# CLOUDWATCH ALARM to monitor the cpu utilization of a service (creating alarams)
+################################################################################
+###CLOUDWATCH ALARM to monitor the cpu utilization of a service (creating alarams)################
+############################################################################
+ 
   resource "aws_cloudwatch_metric_alarm" "target-cpu-scaleup-alaram" {
   for_each           = data.aws_ecs_service.service
     #count             = length(var.servicename) > 0 ? 1 : 0
@@ -93,8 +93,10 @@ resource "aws_appautoscaling_policy" "target-memory-scaleup_policy" {
   }
   
 }
-
-# CLOUDWATCH ALARM to monitor the memory utilization of a service (creating alarams)
+################################################################################
+###CLOUDWATCH ALARM to monitor the memory utilization of a service (creating alarams)################
+############################################################################
+  
   resource "aws_cloudwatch_metric_alarm" "target-memory-scaleup-alaram" {
   for_each           = data.aws_ecs_service.service
     #count             = length(var.servicename) > 0 ? 1 : 0

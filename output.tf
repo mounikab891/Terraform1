@@ -1,6 +1,6 @@
-output "test" {
+output "appautoscaling_policy" {
  value = aws_appautoscaling_policy.target-cpu-scaleup_policy
 }
- output "test1" {
+ output "appautoscaling_target" {
  value = aws_appautoscaling_target.service-autoscale
 }

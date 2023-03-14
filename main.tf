@@ -16,7 +16,7 @@ resource "aws_appautoscaling_target" "service-autoscale" {
 ##################################################################################
 
 data "external" "example" {
-  program = ["bash","servicename.sh"]
+  program = ["bash","servicename.sh","${var.cluster_name}"]
   }
 ################################################################################
 ######################## ecsservice datablock ######################################

@@ -1,8 +1,4 @@
-provider "aws" {
-  region                   = var.region
-  shared_credentials_files = ["/Users/mounikabethu/.aws/credentials"]
-  profile                  = "medibuddy"
-}
+
 ################################################################################
 ########### creating autoscaling for services ##################################
 ##################################################################################

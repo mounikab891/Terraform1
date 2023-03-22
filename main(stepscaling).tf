@@ -60,7 +60,6 @@ data "aws_ecs_service" "service" {
   for_each           = aws_appautoscaling_policy.target-cpu-scaledown_policy
   namespace         = "AWS/ECS"
   alarm_name        = "${each.value.name}"
-  #alarm_actions     = ["arn:aws:sns:ap-south-1:247653494814:ecs-services-metrics"]
   comparison_operator = "LessThanOrEqualToThreshold"
   threshold           = "30"
   evaluation_periods  = "5"
@@ -85,7 +84,6 @@ data "aws_ecs_service" "service" {
   for_each           = aws_appautoscaling_policy.target-memory-scaleup_policy
   namespace         = "AWS/ECS"
   alarm_name        = "${each.value.name}"
-  #alarm_actions     = ["arn:aws:sns:ap-south-1:247653494814:ecs-services-metrics"]
   comparison_operator = "GreaterThanOrEqualToThreshold"
   threshold           = "80"
   evaluation_periods  = "5"
@@ -109,7 +107,6 @@ data "aws_ecs_service" "service" {
   for_each           = aws_appautoscaling_policy.target-memory-scaledown_policy
   namespace         = "AWS/ECS"
   alarm_name        = "${each.value.name}"
-  #alarm_actions     = ["arn:aws:sns:ap-south-1:247653494814:ecs-services-metrics"]
   comparison_operator = "LessThanOrEqualToThreshold"
   threshold           = "30"
   evaluation_periods  = "5"

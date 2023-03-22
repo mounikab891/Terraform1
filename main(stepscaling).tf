@@ -49,7 +49,7 @@ data "aws_ecs_service" "service" {
     ServiceName = "${split("/", each.value.resource_id)[2]}"
   }
   alarm_description = "This metric monitors AWS/ECS/SERVICE CPU utilization"
-  alarm_actions     = ["${each.value.arn}","arn:aws:sns:ap-south-1:247653494814:ecs-services-metrics"]
+  alarm_actions     = ["${each.value.arn}","arn:aws:sns:****:******:snstopicname"]
 
 }
 
@@ -74,7 +74,7 @@ data "aws_ecs_service" "service" {
     ServiceName = "${split("/", each.value.resource_id)[2]}"
   }
   alarm_description = "This metric monitors AWS/ECS/SERVICE CPU utilization"
-  alarm_actions     = ["${each.value.arn}","arn:aws:sns:ap-south-1:247653494814:ecs-services-metrics"]
+  alarm_actions     = ["${each.value.arn}","arn:aws:sns:****:******:snstopicname"]
 
 }
 
@@ -99,7 +99,7 @@ data "aws_ecs_service" "service" {
     ServiceName = "${split("/", each.value.resource_id)[2]}"
   }
   alarm_description = "This metric monitors AWS/ECS/SERVICE Memory utilization"
-  alarm_actions     = ["${each.value.arn}", "arn:aws:sns:ap-south-1:247653494814:ecs-services-metrics"]
+  alarm_actions     = ["${each.value.arn}", "arn:aws:sns:****:******:snstopicname"]
 }
 
 ####################################################################################
@@ -123,7 +123,7 @@ data "aws_ecs_service" "service" {
     ServiceName = "${split("/", each.value.resource_id)[2]}"
   }
   alarm_description = "This metric monitors AWS/ECS/SERVICE Memory utilization"
-  alarm_actions     = ["${each.value.arn}", "arn:aws:sns:ap-south-1:247653494814:ecs-services-metrics"]
+  alarm_actions     = ["${each.value.arn}", "arn:aws:sns:****:******:snstopicname"]
 }
 ################################################################################
 ######################## cpu-scale-up-policy ######################################

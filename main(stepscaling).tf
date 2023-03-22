@@ -34,8 +34,7 @@ data "aws_ecs_service" "service" {
   resource "aws_cloudwatch_metric_alarm" "target-cpu-scaleup-alaram" {
   for_each           = aws_appautoscaling_policy.target-cpu-scaleup_policy
   namespace         = "AWS/ECS"
-  alarm_name        = "${each.value.name}"
-  #alarm_actions     = ["arn:aws:sns:ap-south-1:247653494814:ecs-services-metrics"]
+  alarm_name        = "${var.cluster_name}/${each.value.name}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   threshold           = "80"
   evaluation_periods  = "5"
@@ -59,7 +58,7 @@ data "aws_ecs_service" "service" {
   resource "aws_cloudwatch_metric_alarm" "target-cpu-scaledown-alaram" {
   for_each           = aws_appautoscaling_policy.target-cpu-scaledown_policy
   namespace         = "AWS/ECS"
-  alarm_name        = "${each.value.name}"
+  alarm_name        = "${var.cluster_name}/${each.value.name}"
   comparison_operator = "LessThanOrEqualToThreshold"
   threshold           = "30"
   evaluation_periods  = "5"
@@ -83,7 +82,7 @@ data "aws_ecs_service" "service" {
   resource "aws_cloudwatch_metric_alarm" "target-memory-scaleup-alaram" {
   for_each           = aws_appautoscaling_policy.target-memory-scaleup_policy
   namespace         = "AWS/ECS"
-  alarm_name        = "${each.value.name}"
+  alarm_name        = "${var.cluster_name}/${each.value.name}"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   threshold           = "80"
   evaluation_periods  = "5"
@@ -106,7 +105,7 @@ data "aws_ecs_service" "service" {
   resource "aws_cloudwatch_metric_alarm" "target-memory-scaledown-alaram" {
   for_each           = aws_appautoscaling_policy.target-memory-scaledown_policy
   namespace         = "AWS/ECS"
-  alarm_name        = "${each.value.name}"
+  alarm_name        = "${var.cluster_name}/${each.value.name}"
   comparison_operator = "LessThanOrEqualToThreshold"
   threshold           = "30"
   evaluation_periods  = "5"

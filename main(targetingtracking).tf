@@ -102,7 +102,7 @@ resource "aws_appautoscaling_policy" "target-memory-scaleup_policy" {
   for_each           = data.aws_ecs_service.service
   namespace         = "AWS/ECS"
   alarm_name        = "${each.value.service_name}-cpuUtilization"
-  alarm_actions     = ["arn:aws:sns:ap-south-1:247653494814:ecs-services-metrics"]
+  alarm_actions     = ["arn:aws:sns:****:******:snstopicname"]
   comparison_operator = "GreaterThanOrEqualToThreshold"
   threshold           = "80"
   evaluation_periods  = "5"
@@ -124,7 +124,7 @@ resource "aws_appautoscaling_policy" "target-memory-scaleup_policy" {
   for_each           = data.aws_ecs_service.service
   namespace         = "AWS/ECS"
   alarm_name        = "${each.value.service_name}-memoryUtilization"
-  alarm_actions     = ["arn:aws:sns:ap-south-1:247653494814:ecs-services-metrics"]
+  alarm_actions     = ["arn:aws:sns:****:******:snstopicname"]
   comparison_operator = "GreaterThanOrEqualToThreshold"
   threshold           = "80"
   evaluation_periods  = "5"

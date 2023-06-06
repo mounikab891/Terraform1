@@ -25,7 +25,7 @@ data "external" "example" {
 data "aws_ecs_service" "service" {
   for_each           = toset(flatten([for k, v in data.external.example.result : jsondecode(v)]))
   service_name       = each.value
-  cluster_arn        = "arn:aws:ecs:ap-south-1:247653494814:cluster/${var.cluster_name}"
+  cluster_arn        = "arn:aws:ecs:XXXXXX:cluster/${var.cluster_name}"
 }
 
 ################################################################################
@@ -49,7 +49,7 @@ resource "aws_appautoscaling_policy" "target-cpu-scaleup_policy" {
       unit        = "Percent"
       dimensions {
         name  = "ClusterName"
-        value = "${var.mb-privatecluster-2}"
+        value = "${var.XXXX}"
       }
       dimensions {
         name  = "ServiceName"
@@ -82,7 +82,7 @@ resource "aws_appautoscaling_policy" "target-memory-scaleup_policy" {
       unit        = "Percent"
       dimensions {
         name  = "ClusterName"
-        value = "${var.mb-privatecluster-2}"
+        value = "${var.XXXXXX}"
       }
 
         dimensions {
@@ -112,7 +112,7 @@ resource "aws_appautoscaling_policy" "target-memory-scaleup_policy" {
   datapoints_to_alarm =  "5"
   dimensions = {
     
-    ClusterName = "${var.mb-privatecluster-2}"
+    ClusterName = "${var.cluster}"
     ServiceName = "${each.value.service_name}"
   }
   
@@ -134,7 +134,7 @@ resource "aws_appautoscaling_policy" "target-memory-scaleup_policy" {
   datapoints_to_alarm =  "5"
   dimensions = {
     
-    ClusterName = "${var.mb-privatecluster-2}"
+    ClusterName = "${var.clustername}"
     ServiceName = "${each.value.service_name}"
   }
   

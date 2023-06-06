@@ -25,7 +25,7 @@ data "external" "example" {
 data "aws_ecs_service" "service" {
   for_each           = toset(flatten([for k, v in data.external.example.result : jsondecode(v)]))
   service_name       = each.value
-  cluster_arn        = "arn:aws:ecs:ap-south-1:247653494814:cluster/${var.cluster_name}"
+  cluster_arn        = "arn:aws:ecs:XXXXXr/${var.cluster_name}"
 }
 
 ##########################################################################################
